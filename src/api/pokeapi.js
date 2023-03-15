@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const API =
   import.meta.env.VITE_APP_API;
 
@@ -6,8 +8,18 @@ const VERSION =
 
 const endPoint = {
   pokemon: {
-    getPokemons: `${API}${VERSION}/pokemon?limit=151`,
+    getPokemon: `${API}${VERSION}/pokemon?limit=151`,
   }
 };
 
-export default endPoint;
+export const getPokemonFirstGeneration = () => {
+  return axios.get(endPoint.pokemon.getPokemon)
+    .then((response) => response.data.results)
+    .catch((error) => console.log(error));
+};
+
+export const getPokemonDetails = (pokemon) => {
+  return axios.get(pokemon.url)
+    .then(response => response.data)
+    .catch((error) => console.log(error));
+}

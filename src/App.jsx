@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 import { Col } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from "axios";
-import endPoint from "./api/pokeapi";
+import { getPokemonFirstGeneration } from "./api/pokeapi";
 import Searcher from './components/Searcher';
 import PokemonList from './components/PokemonList';
-import { setPokemons } from './actions';
+import { getPokemonWithDetails } from './actions';
 import logoImg from './static/logo.svg';
-import './App.css'
+import './App.css';
 
 function App() {
 
@@ -15,13 +14,11 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getPokemons = async () => {
-      const result = await axios.get(endPoint.pokemon.getPokemons);
-      dispatch(setPokemons(result.data.results));
+    const fetchPokemons = async () => {
+      const resultListPokemon = await getPokemonFirstGeneration();
+      dispatch(getPokemonWithDetails(resultListPokemon));
     };
-    getPokemons()
-      .then(() => console.info('result success!!'))
-      .catch((error) => console.log(error));
+    fetchPokemons();
   }, []);
 
   return (
