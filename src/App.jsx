@@ -4,13 +4,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getPokemonFirstGeneration } from "./api/pokeapi";
 import Searcher from './components/Searcher';
 import PokemonList from './components/PokemonList';
-import { getPokemonWithDetails } from './actions';
+import { getPokemonWithDetails, setLoading } from './actions';
 import logoImg from './static/logo.svg';
 import './App.css';
+import PokeBallLoader from './components/PokeBallLoader';
 
 function App() {
 
   const pokemons = useSelector(state => state.pokemons);
+  const loading = useSelector(state => state.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +31,13 @@ function App() {
       <Col span={8} offset={8}>
         <Searcher />
       </Col>
-      <PokemonList pokemons={pokemons} />
+      {loading ? (
+        <Col offset={8}>
+          <PokeBallLoader />
+        </Col>
+      ) : (
+        <PokemonList pokemons={pokemons} />
+      )}
     </div>
   )
 };
