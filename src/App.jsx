@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
 import { Col } from 'antd';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { getPokemonFirstGeneration } from "./api/pokeapi";
 import Searcher from './components/Searcher';
 import PokemonList from './components/PokemonList';
-import { getPokemonWithDetails, setLoading } from './actions';
+import { getPokemonWithDetails } from './actions';
 import logoImg from './static/logo.svg';
 import './App.css';
 import PokeBallLoader from './components/PokeBallLoader';
 
 function App() {
 
-  const pokemons = useSelector(state => state.pokemons);
-  const loading = useSelector(state => state.loading);
+  const pokemons = useSelector(state => state.getIn(['data', 'pokemons'], shallowEqual)).toJS();
+  const loading = useSelector(state => state.getIn(['ui', 'loading']));
   const dispatch = useDispatch();
 
   useEffect(() => {

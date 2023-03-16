@@ -6,12 +6,16 @@ const PokemonList = ({ pokemons }) => {
   return (
     <div className="PokemonList">
       {pokemons.map((pokemon) => {
-        return <PokemonCard
-          name={pokemon.name}
-          key={pokemon.key}
-          image={pokemon.sprites.front_default}
-          types={pokemon.types}
-        />;
+        return (
+          <PokemonCard
+            name={pokemon.name}
+            key={pokemon.key}
+            image={pokemon.sprites.front_default}
+            types={pokemon.types}
+            id={pokemon.id}
+            favorite={pokemon.favorite}
+          />
+        );
       })}
     </div>
   )
