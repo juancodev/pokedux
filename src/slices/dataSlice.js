@@ -1,15 +1,17 @@
 import {
   createSlice,
   createAsyncThunk
-} from "@reduxjs/toolkit";
-import {
-  setLoading
-} from "../slices/uiSlice";
-
+}
+from "@reduxjs/toolkit";
 import {
   getPokemonFirstGeneration,
   getPokemonDetails
 } from "../api/pokeapi";
+
+import {
+  setLoading
+} from "./uiSlice";
+
 
 const initialState = {
   pokemons: [],
