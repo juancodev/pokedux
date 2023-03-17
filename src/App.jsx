@@ -9,7 +9,7 @@ import { fetchPokemonWithDetails } from './slices/dataSlice';
 import './App.css';
 
 function App() {
-  const pokemons = useSelector(state => state.data.pokemons, shallowEqual);
+  const pokemons = useSelector(state => state.data.pokemonSearch, shallowEqual);
 
   const loading = useSelector(state => state.ui.loading);
 
