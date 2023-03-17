@@ -1,7 +1,36 @@
 .PokemonList{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
   margin: 3rem;
   padding: 0 3rem 3rem;
+}
+
+@media (min-width: 337px) and (max-width: 640px) {
+  .PokemonList {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 48px 0 0 0;
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 719px) {
+  .PokemonList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 3rem 2rem;
+    padding: 0 0;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .PokemonList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 3rem;
+    padding: 0 3rem 3rem;
+  }
 }
