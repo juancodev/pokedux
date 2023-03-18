@@ -30,14 +30,13 @@
   z-index: 5;
   border-bottom: 5px solid #000;
   box-sizing: border-box;
-  animation: eyeShade 3s infinite;
+  animation: eyeShade 4s infinite;
 }
 
 .loader::before {
   content: 'O';
   text-align: center;
   font-size: 13px;
-  /* font-weight: bold; */
   position: absolute;
   top: 22px;
   left: 24px;
@@ -48,7 +47,7 @@
   background: #fff;
   border: 6px solid #000;
   border-radius: 50%;
-  animation: eyeMove 3s infinite;
+  animation: eyeMove 4s infinite;
 }
 
 @keyframes eyeShade {
@@ -87,11 +86,11 @@
   }
 
   40% , 50% {
-    transform: translate(0px , -5px)
+    transform: translate(0px , -5px);
   }
 
   60% {
-    transform: translate(-10px , -5px)
+    transform: translate(-10px , -5px);
   }
 
   75% {
@@ -99,7 +98,7 @@
   }
 
   100% {
-    transform: translate(0 , 10px)
+    transform: translate(0 , 10px);
   }
 }
 
@@ -154,4 +153,10 @@
  50% {
   transform: translateY(-10px);
  }
+}
+
+@media (max-width: 720px){
+    .loader::after {
+    z-index: 1;
+  }
 }

@@ -1,10 +1,8 @@
 import {
   combineReducers
-} from 'redux-immutable';
+} from 'redux';
 import dataReducer from '../slices/dataSlice';
-import {
-  uiReducer
-} from '../slices/uiSlice';
+import uiReducer from '../slices/uiSlice';
 
 const rootReducer = combineReducers({
   data: dataReducer,

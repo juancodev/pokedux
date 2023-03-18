@@ -1,18 +1,21 @@
 import {
   createSlice,
   createAsyncThunk
-} from "@reduxjs/toolkit";
-import {
-  setLoading
-} from "../slices/uiSlice";
-
+}
+from "@reduxjs/toolkit";
 import {
   getPokemonFirstGeneration,
   getPokemonDetails
 } from "../api/pokeapi";
 
+import {
+  setLoading
+} from "./uiSlice";
+
+
 const initialState = {
   pokemons: [],
+  pokemonSearch: [],
 };
 
 export const fetchPokemonWithDetails = createAsyncThunk(
@@ -35,6 +38,8 @@ export const dataSlice = createSlice({
   reducers: {
     setPokemons: (state, action) => {
       state.pokemons = action.payload;
+
+      state.pokemonSearch = action.payload;
     },
     setFavorite: (state, action) => {
       const currentPokemonIndex = state.pokemons.findIndex((pokemon) => {
@@ -45,14 +50,22 @@ export const dataSlice = createSlice({
         const isFavorite = state.pokemons[currentPokemonIndex].favorite;
 
         state.pokemons[currentPokemonIndex].favorite = !isFavorite;
+
+        state.pokemonSearch[currentPokemonIndex].favorite = !isFavorite;
       }
     },
+    setSearch: (state, action) => {
+      const pokemonSearching = state.pokemons.filter(pokemon => pokemon.name.includes(action.payload));
+
+      state.pokemonSearch = pokemonSearching
+    }
   },
 });
 
 export const {
   setFavorite,
-  setPokemons
+  setPokemons,
+  setSearch
 } = dataSlice.actions
 
 console.log('dataSlice:', dataSlice.actions);

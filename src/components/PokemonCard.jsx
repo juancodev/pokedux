@@ -1,4 +1,5 @@
 import { Card } from 'antd';
+import { Image } from 'antd';
 import { useDispatch } from 'react-redux';
 import Meta from 'antd/lib/card/Meta';
 import { setFavorite } from '../slices/dataSlice';
@@ -14,7 +15,7 @@ const PokemonCard = ({ name, image, types, id, favorite }) => {
   return (
     <Card
       title={name}
-      cover={<img src={image} alt={name} />}
+      cover={<Image src={image} alt={name} />}
       extra={<StartButton isFavorite={favorite} onClick={handleOnFavorite} />}
     >
       <Meta description={typesString} />
